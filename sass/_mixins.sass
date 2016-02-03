@@ -1,0 +1,39 @@
+$screenwidth: 1920
+
+$browser-context: 16// Default
+
+@function em($pixels, $context: $browser-context)
+  @return #{$pixels / $context}rem
+
+=clearfix
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+//fix box-sizing Susy warning
+=box-sizing($value)
+  -moz-box-sizing: $value
+  box-sizing: $value
+
+//////////////// Some compass mixins ///////////////
+
+@function headings($from: 1, $to: 6)
+  @if $from == $to
+    @return "h#{$from}"
+  @else
+    @return "h#{$from}," + headings($from + 1, $to)
+
+// #{headings(1,6)} {
+//   color: white;
+// }
+
+=column-count($value)
+  -moz-column-count: $value// Firefox
+  -webkit-column-count: $value// Safari & Chrome
+  column-count: $value
+
+=transition($value)
+  -webkit-transition: $value
+  -moz-transition: $value
+  transition: $value

@@ -1,0 +1,279 @@
+//Susy setup
+
+// $susy: (
+//   columns            : 4,
+//   gutters            : 0,//1/4,
+//   // column-width       : 4em,
+//   math               : fluid,
+//   output             : float,
+//   gutter-position    : inside,
+//   // debug: (
+//   //   image: show
+//   //   )
+// );
+
+// @include border-box-sizing; 
+// *, *:before, *:after {
+//   box-sizing: border-box;
+// }
+
+// article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+//   display: block;
+// }
+
+img, object, embed, video
+  max-width: 100%
+  height: auto
+  box-sizing: content-box
+
+table img
+  max-width: auto
+
+video
+  width: 100% !important
+  height: auto !important
+
+//breakpoint section
+
+/////////////////////////////////////// Small /////////////////////////////////////
+
++breakpoint($small)
+  $mobilelayout: layout($num-cols-mobile 0 fluid float inside)
+
+  //1/8
+  +layout($mobilelayout)
+
+  .tm ul, .f-nav
+    display: none
+
+  #content
+    flex-direction: column
+
+  .l-col
+    display: none
+
+  #head
+    flex-direction: column
+
+    & > div
+      margin: 0 auto
+
+  .hbg-1, .hbg-3
+    display: none
+
+  .hbg-2
+    position: relative
+    left: auto
+    right: auto
+
+  // content
+  .button
+    margin-bottom: 1em
+
+  .slider
+    display: none
+
+  main .menu li
+    width: 40%
+
+  main h1, main h2
+    text-align: center
+
+  .contacts-icons, .order-icon-set, .stamp-data-icons, .three-column, .two-column
+    flex-direction: column
+
+  .table2 > tbody > tr
+    display: flex
+    flex-direction: column
+
+  .table2 > tbody > tr > td
+    display: block
+    margin: 0 auto
+
+  .square-list
+    li
+      &:nth-child(2n)
+        margin-right: 0
+
+      &:before
+
+
+/////////////////////////////////////// Medium /////////////////////////////////////
+
++breakpoint($medium)
+  +layout($num-cols-tablet)
+
+  //main page section
+
+  // content
+  .button
+    margin-bottom: 0
+    margin-right: 16px
+
+  .slider
+    display: block
+
+  main h1, main h2
+    text-align: left
+
+  .contacts-icons, .order-icon-set, .stamp-data-icons, .three-column, .two-column
+    flex-direction: row
+
+  // icons
+  .order-icon-set
+    li
+      &:after
+        content: '\2192\00a0'
+
+        //тЖТ
+        position: absolute
+        width: 51px
+        height: 51px
+        font-size: em(32)
+        line-height: 51px
+        color: $orange
+
+        // background: url(../images/stamp-icons/order-icon-set-arrow.png) no-repeat;
+        top: 0
+        right: -30px
+
+      &:last-child:after
+        display: none
+
+  .order-icon-set3
+    li
+      &:after
+        content: ' '
+        width: 50%
+        max-width: 144px
+        height: 61px
+        background: url(../images/stamp-icons/order-icon-set-long-arrow.png) no-repeat 100%
+        top: 0
+        right: -25%
+
+  .delivery-icons > li
+    margin-top: 0
+    margin-left: 232px
+
+    &:before
+      left: -180px
+      top: 5px
+
+  .delivery-icons2 > li
+    &:nth-child(1):before
+      left: -230px
+      top: 10px
+
+    &:nth-child(2):before
+      left: -230px
+      top: 10px
+
+  .letters
+    column-count: 3
+
+
+/////////////////////////////////////// Large /////////////////////////////////////
+
++breakpoint($large)
+  // 769px+
+  +layout($num-cols-desktop)
+
+  .slicknav_menu
+    display: none
+
+  .tm
+    a
+      padding: 0 25px
+
+  .tm ul, .f-nav
+    display: block
+
+  #content
+    flex-direction: row
+
+  #head
+    flex-direction: row
+
+    & > div
+      margin: 0
+
+  .l-col
+    display: block
+
+  .hbg-2
+    position: absolute
+    top: 0
+    left: 53%
+
+  // content
+  main .menu li
+    width: 30%
+
+  .table2 > tbody > tr
+    display: table-row
+
+  .table2 > tbody > tr > td
+    display: table-cell
+
+  .square-list
+    li
+      &:nth-child(3n)
+        margin-right: 0
+
+      &:before
+
+  //contacts
+  .ribbon-left, .ribbon-right
+    width: 76%
+
+  .contacts-photo
+    width: 47%
+    max-width: 450px
+
+  .contacts-article
+    width: 47%
+    max-width: 450px
+    min-height: 340px
+    margin-top: 0
+    margin-left: 36px
+
+    &:after, &:before
+      right: 100%
+      top: 35%
+      border: solid transparent
+      content: " "
+      height: 0
+      width: 0
+      position: absolute
+      pointer-events: none
+
+    &:after
+      border-color: rgba(255, 255, 255, 0)
+      border-right-color: $white
+      border-width: 24px
+      margin-top: -24px
+
+    &:before
+      border-color: rgba(243, 150, 10, 0)
+      border-right-color: $orange
+      border-width: 25px
+      margin-top: -25px
+
+  //delivery
+
+  .letters
+    column-count: 4
+
+
+/////////////////////////////////////// Extra Large /////////////////////////////////////
+
++breakpoint($extra-large)
+  +layout($num-cols-desktop)
+
+  .hbg-1, .hbg-3
+    display: block
+
+
+// Print version
+
+@media print
